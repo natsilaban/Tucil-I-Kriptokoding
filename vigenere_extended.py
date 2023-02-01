@@ -1,8 +1,12 @@
-import base64
+import binascii
 
-with open("testpdf.pdf", "rb") as upload:
-    x = base64.b64encode(upload.read())
-    text = x.decode('utf-8')
+#with open("testpdf.pdf", "rb") as upload:
+#    x = binascii.hexlify(upload())
+#    text = x.decode('utf-8')
+
+bin_data = open('gambar.png', 'rb').read()
+hex_data = binascii.hexlify(bin_data)
+text = hex_data.decode('utf-8')
 
 def autoKey(text, key):
     key = list(key.upper())
