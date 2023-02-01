@@ -56,3 +56,5 @@
 # #                 return i, j
 
 # # print(search(matrix, perDua[0][0]))
+
+print(ord('A'))
