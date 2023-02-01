@@ -19,7 +19,7 @@ def encryptText(text, key):
     for i in range(len(text)):
         x = ((ord(text[i]) - 65) + (ord(key[i]) - 65)) % 26
         listofText.append(chr(x + 65))
-    print (''.join(listofText))
+    return (''.join(listofText))
 
 def decryptText(text, key):
     text = alphabetOnly(text)
@@ -28,4 +28,4 @@ def decryptText(text, key):
     for i in range(len(text)):
         x = ((ord(text[i]) - 65) - (ord(key[i]) - 65)) % 26
         listofText.append(chr(x + 65))
-    print (''.join(listofText))
+    return (''.join(listofText))
