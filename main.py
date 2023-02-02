@@ -1,6 +1,7 @@
 import playfair as pf
 import vigenere_alphabet as va
 import onetimepad as otp
+import vigenere_extended as ve
 
 print("Apa cipher yang mau digunakan?\n [1] Vignere\n [2] Extended Vigenere \n [3] Playfair\n [4] One-Time Pad")
 
@@ -23,6 +24,15 @@ if cipher == 1:
     else:
         decrypted = va.decryptText(plaintext, key)
         print("Hasil dekripsi: "+decrypted)
+
+elif cipher == 2:
+    key = input("Silahkan masukkan key: ")
+    if choice == 1:
+        encrypted = ve.encryptExt(plaintext, key)
+        print("Hasil enkripsi: "+ encrypted)
+    else:
+        decrypted = ve.decryptExt(plaintext, key)
+        print("Hasil dekrpsiL "+ decrypted)
 
 elif cipher == 3:
     key = input("Silakan masukkan key: ")
