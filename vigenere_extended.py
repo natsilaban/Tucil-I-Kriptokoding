@@ -1,12 +1,5 @@
-import binascii
-
-#with open("testpdf.pdf", "rb") as upload:
-#    x = binascii.hexlify(upload())
-#    text = x.decode('utf-8')
-
-bin_data = open('gambar.png', 'rb').read()
-hex_data = binascii.hexlify(bin_data)
-text = hex_data.decode('utf-8')
+#with open('a.pdf', 'rb') as file:
+#    text = file.read()
 
 def autoKey(text, key):
     key = list(key.upper())
@@ -17,21 +10,27 @@ def autoKey(text, key):
             key.append(key[i % len(key)])
     return ''.join(key)
 
-def encryptText(text, key):
+def encryptExt(text, key):
     key = autoKey(text, key)
     listofText = []
+    a = b''
     for i in range(len(text)):
-        x = ((ord(text[i])) + (ord(key[i]))) % 256
-        listofText.append(chr(x))
-    print (''.join(listofText))
+        x = ((text[i]) + (ord(key[i]))) % 256
+        listofText.append(x)
+        a += x.to_bytes(1, 'big')
+    return a
 
-def decryptText(text, key):
+def decryptExt(text, key):
     key = autoKey(text, key)
     listofText = []
+    a = b''
     for i in range(len(text)):
-        x = ((ord(text[i])) - (ord(key[i]))) % 256
-        listofText.append(chr(x))
-    print (''.join(listofText))
+        x = ((text[i]) - (ord(key[i]))) % 256
+        listofText.append(x)
+        a += x.to_bytes(1, 'big')
+    return a
 
-key = "abc"
-encryptText(text, key)
+#key = "ABC"
+#a = decryptExt(text, key)
+#with open('a.pdf', 'wb') as f:
+#        f.write(a)
