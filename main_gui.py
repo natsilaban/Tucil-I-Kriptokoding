@@ -6,6 +6,7 @@ import onetimepad as otp
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication, QWidget, QComboBox, QPushButton, QMainWindow
 from PyQt6.uic import loadUi
+import os.path
 
 class Window(QMainWindow):
     def __init__(self):
@@ -35,7 +36,8 @@ class Window(QMainWindow):
             self.generateButton.clicked.connect(self.playfairEn)
 
         elif (self.comboBoxMethod.currentText() == "One-time Pad"):
-            print("s")    
+            print("s")
+            self.generateButton.clicked.connect(self.onetimepadEn)   
 
     def methodDecrypt(self):
         if (self.comboBoxMethod.currentText() == "Vigenere Standard"):
@@ -51,7 +53,9 @@ class Window(QMainWindow):
             self.generateButton.clicked.connect(self.playfairDe)
 
         elif (self.comboBoxMethod.currentText() == "One-time Pad"):
-            print("s")    
+
+            print("mashoook")   
+            self.generateButton.clicked.connect(self.onetimepadDe) 
 
     def vigenereEn(self):
         key = self.textEditKey.toPlainText()
@@ -64,13 +68,13 @@ class Window(QMainWindow):
 
     def vigenereExEn(self):
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
+        a = self.textEditPlaintext.toPlainText()
+        print(key)
+        print(a)
         text = "testpdf.pdf"
-        a = ve.pathInput(text)
-        encrypted = ve.encryptExt(a, key)
-        print("wek")
-        return ve.writeFile(a, encrypted)
-        
+        bin_data = open(text, 'rb').read()
+
+        return ve.encryptExt(bin_data, key)
 
     def playfairEn(self):
         key = self.textEditKey.toPlainText()
@@ -81,13 +85,20 @@ class Window(QMainWindow):
         self.textHasilKelompok.setText(encryptedSpasi)
 
     def onetimepadEn(self):
-        key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText() + '.txt'
-        otp.generateRandomKey(text)
-        encrypted = va.encryptText(key, text)
+        print("0")
+        filename = self.textEditFilename.toPlainText() + '.txt'
+        print("1")
+        text = self.textEditPlaintext.toPlainText()
+        if not (os.path.exists(filename)):
+            otp.generateRandomKey(filename)
+        print("2")
+        key = otp.getKey(filename, text)
+        encrypted = va.encryptText(text, key)
+        print("3")
         self.textHasiltanpaspace.setText(encrypted)
         encryptedSpasi = perLima(encrypted)
-        self.textHasilKelompok.setText(encryptedSpasi)        
+        self.textHasilKelompok.setText(encryptedSpasi) 
+  
 
     def vigenereDe(self):
         key = self.textEditKey.toPlainText()
@@ -115,6 +126,18 @@ class Window(QMainWindow):
         decryptedSpasi = perLima(decrypted)
         self.textHasilKelompok.setText(decryptedSpasi)
 
+    def onetimepadDe(self):
+        print("0")
+        filename = self.textEditFilename.toPlainText() + '.txt'
+        print("1")
+        text = self.textEditPlaintext.toPlainText()
+
+        key = otp.getKey(filename, text)
+        decrypted = va.decryptText(text, key)
+        print("3")
+        self.textHasiltanpaspace.setText(decrypted)
+        decryptedSpasi = perLima(decrypted)
+        self.textHasilKelompok.setText(decryptedSpasi) 
 
 def perLima(text):
     perLima = ""

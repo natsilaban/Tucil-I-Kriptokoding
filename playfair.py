@@ -1,4 +1,8 @@
 
+def alphabetOnly(text):
+    textUpperCase = text.lower()
+    return ''.join(i for i in textUpperCase if i.isalpha())
+
 def createKeyTable(key):
     letters = []
     for i in key:
@@ -86,11 +90,9 @@ def barisKolomBeda(key, barisA, barisB, kolomA, kolomB):
 
 def encryptPlayfair(key, plaintext):
     encrypted = []
-    key = key.replace(" ", "")
-    key = key.lower()
+    key = alphabetOnly(key)
     keyTable = createKeyTable(key)
-    plaintext = plaintext.replace(" ", "")
-    plaintext = plaintext.lower()
+    plaintext = alphabetOnly(key)
 
     text = bagiDuaPlaintext(ubahPlaintext(plaintext))
 
@@ -144,11 +146,9 @@ def deBarisKolomBeda(key, barisA, barisB, kolomA, kolomB):
 
 def decryptPlayfair(key, plaintext):
     decrypted = []
-    key = key.replace(" ", "")
-    key = key.lower()
+    key = alphabetOnly(key)
     keyTable = createKeyTable(key)
-    plaintext = plaintext.replace(" ", "")
-    plaintext = plaintext.lower()
+    plaintext = alphabetOnly(plaintext)
     
     text = bagiDuaPlaintext(plaintext)
 
