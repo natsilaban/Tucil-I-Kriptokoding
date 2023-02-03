@@ -52,9 +52,21 @@ elif cipher == 4:
         
         key = otp.getKey(filetext, plaintext)
         encrypted = (va.encryptText(plaintext, key))
-        print("Hasil enkripsi: " + "".join(encrypted))
+        print("Hasil enkripsi: " + encrypted)
     else:
         filetext = filename + '.txt'
         key = otp.getKey(filetext, plaintext)
         decrypted = (va.decryptText(plaintext, key))
-        print("Hasil dekripsi: "+"".join(decrypted))
+        print("Hasil dekripsi: "+decrypted)
+
+def perLima(text):
+    perLima = ""
+    group = 0
+    for i in range(5, len(text), 5):
+        if group != 0:
+            perLima = perLima + " " + (text[group:i])
+        else:
+            perLima = text[group:i]
+        group = i
+    perLima = perLima + " " + (text[group:])
+    return perLima

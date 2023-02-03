@@ -40,7 +40,7 @@ class CipherWindow(QDialog):
         self.cb.addItem("Extended Vigenere")
         self.cb.addItem("Playfair")
         self.cb.addItem("One-Time Pad")
-        self.cb.currentIndexChanged.connect(self.selectionchange)
+        # self.cb.currentIndexChanged.connect(self.selectionchange)
         
         self.generalLayout.addWidget(self.cb)
 
@@ -56,8 +56,8 @@ class CipherWindow(QDialog):
 
         self.generalLayout.addWidget(runBtn)
 
-        if (self.cb.currentText() == "Vigenere"):
-            runBtn.clicked.connect(self.vigenere(self.key.text(), self.text.text()))
+        # if (self.cb.currentText() == "Vigenere"):
+        #     runBtn.clicked.connect(vigenere(self.key.text(), self.text.text()))
 
         # button cipher choice
         # vigenereBtn = QPushButton("Vigenere")
@@ -75,23 +75,36 @@ class CipherWindow(QDialog):
         # self.generalLayout.addWidget(playfairBtn)
         # self.generalLayout.addWidget(otpBtn)
         centralWidget.setLayout(self.generalLayout)
+   
+def vigenere(key, text):
+    return (va.encryptText(text, key))
 
-    # def chooseCipher(self):
-    #     self.generalLayout.addWidget(QLineEdit(self))
+# class VigenereCipher:
+#     def __init__(self, model, view):
+#         self._evaluate = model
+#         self._view = view
+#         self._connectSignalsAndSlots()
 
-    def selectionchange(self):
-        cipherChoice = self.cb.currentText()
-        return cipherChoice
+#     def _calculateResult(self):
+#         result = self._evaluate(expression=self._view.displayText())
+#         self._view.setDisplayText(result)
 
-    def vigenere(self, key, text):
-        print(va.encryptText(key, text))
-        
-            
-class VigenereCipher(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Vigenere")
-        QLabel("ngok")
+#     def _buildExpression(self, subExpression):
+#         if self._view.displayText() == ERROR_MSG:
+#             self._view.clearDisplay()
+#         expression = self._view.displayText() + subExpression
+#         self._view.setDisplayText(expression)
+
+#     def _connectSignalsAndSlots(self):
+#         for keySymbol, button in self._view.buttonMap.items():
+#             if keySymbol not in {"=", "C"}:
+#                 button.clicked.connect(
+#                     partial(self._buildExpression, keySymbol)
+#                 )
+#         self._view.buttonMap["="].clicked.connect(self._calculateResult)
+#         self._view.display.returnPressed.connect(self._calculateResult)
+#         self._view.buttonMap["C"].clicked.connect(self._view.clearDisplay)
+
 
 def main():
     app = QApplication([])

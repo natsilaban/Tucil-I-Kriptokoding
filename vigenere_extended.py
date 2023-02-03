@@ -1,5 +1,7 @@
-#with open('a.pdf', 'rb') as file:
-#    text = file.read()
+def pathInput(input):
+    with open(input, 'rb') as file:
+        text = file.read()
+    return text
 
 def autoKey(text, key):
     key = list(key.upper())
@@ -29,6 +31,10 @@ def decryptExt(text, key):
         listofText.append(x)
         a += x.to_bytes(1, 'big')
     return a
+
+def writeFile(input, hasil):
+    with open(input, 'wb') as f:
+        f.write(hasil)
 
 #key = "ABC"
 #a = decryptExt(text, key)

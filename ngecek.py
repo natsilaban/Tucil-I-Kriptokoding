@@ -57,4 +57,16 @@
 
 # # print(search(matrix, perDua[0][0]))
 
-print(ord('A'))
+# print(ord('A'))
+
+text = "heldskjkbdsfjkhwqgetwefjfsdf"
+perLima = ""
+group = 0
+for i in range(5, len(text), 5):
+    if group != 0:
+        perLima = perLima + " " + (text[group:i])
+    else:
+        perLima = text[group:i]
+    group = i
+perLima = perLima + " " + (text[group:])
+print(perLima)

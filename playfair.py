@@ -108,7 +108,7 @@ def encryptPlayfair(key, plaintext):
         en = a + b
         encrypted.append(en)
     
-    return encrypted
+    return "".join(encrypted).upper()
 
 def deBarisSama(key, baris, kolomA, kolomB):
     if kolomA == 0:
@@ -166,4 +166,4 @@ def decryptPlayfair(key, plaintext):
         en = a + b
         decrypted.append(en)
     
-    return decrypted
+    return "".join(decrypted).upper()
