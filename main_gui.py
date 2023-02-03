@@ -4,7 +4,7 @@ import vigenere_extended as ve
 import playfair as pf
 import onetimepad as otp
 from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtWidgets import QApplication, QWidget, QComboBox, QPushButton, QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.uic import loadUi
 import os.path
 
@@ -14,7 +14,7 @@ class Window(QMainWindow):
         loadUi("uiciper.ui", self)
 
         self.comboBoxMethod_2.activated.connect(self.method)
-        print("wek1")
+
         self.saveButton.clicked.connect(self.saveResult)
 
     def method(self):
@@ -25,37 +25,36 @@ class Window(QMainWindow):
 
     def methodEncrypt(self):
         if (self.comboBoxMethod.currentText() == "Vigenere Standard"):
-            print("wek2")
+
             self.generateButton.clicked.connect(self.vigenereEn)
 
         elif (self.comboBoxMethod.currentText() == "Extended Vigenere Cipher"):
-            print("s")
+
             self.generateButton.clicked.connect(self.vigenereExEn)    
 
         elif (self.comboBoxMethod.currentText() == "Playfair Cipher"):
-            print("s")    
+
             self.generateButton.clicked.connect(self.playfairEn)
 
         elif (self.comboBoxMethod.currentText() == "One-time Pad"):
-            print("s")
+
             self.generateButton.clicked.connect(self.onetimepadEn)   
 
     def methodDecrypt(self):
         if (self.comboBoxMethod.currentText() == "Vigenere Standard"):
-            print("wek2")
+
             self.generateButton.clicked.connect(self.vigenereDe)
 
         elif (self.comboBoxMethod.currentText() == "Extended Vigenere Cipher"):
-            print("s")
+
             self.generateButton.clicked.connect(self.vigenereExDe)    
 
         elif (self.comboBoxMethod.currentText() == "Playfair Cipher"):
-            print("s")    
+   
             self.generateButton.clicked.connect(self.playfairDe)
 
         elif (self.comboBoxMethod.currentText() == "One-time Pad"):
-
-            print("mashoook")   
+ 
             self.generateButton.clicked.connect(self.onetimepadDe) 
 
     def vigenereEn(self):
@@ -69,7 +68,6 @@ class Window(QMainWindow):
         self.textHasiltanpaspace.setText(encrypted)
         encryptedSpasi = perLima(encrypted)
         self.textHasilKelompok.setText(encryptedSpasi)
-        print("wek")
 
     def vigenereExEn(self):
         key = self.textEditKey.toPlainText()
@@ -102,10 +100,10 @@ class Window(QMainWindow):
 
         if not (os.path.exists(filename)):
             otp.generateRandomKey(filename)
-        print("2")
+
         key = otp.getKey(filename, text)
         encrypted = va.encryptText(text, key)
-        print("3")
+
         self.textHasiltanpaspace.setText(encrypted)
         encryptedSpasi = perLima(encrypted)
         self.textHasilKelompok.setText(encryptedSpasi) 
@@ -121,7 +119,7 @@ class Window(QMainWindow):
         self.textHasiltanpaspace.setText(decrypted)
         decryptedSpasi = perLima(decrypted)
         self.textHasilKelompok.setText(decryptedSpasi)
-        print("wek")
+
 
     def vigenereExDe(self):
         key = self.textEditKey.toPlainText()
@@ -153,7 +151,7 @@ class Window(QMainWindow):
 
         key = otp.getKey(filename, text)
         decrypted = va.decryptText(text, key)
-        print("3")
+
         self.textHasiltanpaspace.setText(decrypted)
         decryptedSpasi = perLima(decrypted)
         self.textHasilKelompok.setText(decryptedSpasi)
