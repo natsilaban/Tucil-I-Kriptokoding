@@ -68,13 +68,12 @@ class Window(QMainWindow):
 
     def vigenereExEn(self):
         key = self.textEditKey.toPlainText()
-        a = self.textEditPlaintext.toPlainText()
-        print(key)
-        print(a)
-        text = "testpdf.pdf"
+        text = self.textEditPlaintext.toPlainText()
         bin_data = open(text, 'rb').read()
-
-        return ve.encryptExt(bin_data, key)
+        encrypted = ve.encryptExt(bin_data, key)
+        with open(text, 'wb') as f:
+            final = f.write(encrypted)
+        return final
 
     def playfairEn(self):
         key = self.textEditKey.toPlainText()
@@ -112,11 +111,11 @@ class Window(QMainWindow):
     def vigenereExDe(self):
         key = self.textEditKey.toPlainText()
         text = self.textEditPlaintext.toPlainText()
-        encrypted = ve.decryptExt(text, key)
-        self.textHasiltanpaspace.setText(encrypted)
-        encryptedSpasi = perLima(encrypted)
-        self.textHasilKelompok.setText(encryptedSpasi)
-        print("wek")    
+        bin_data = open(text, 'rb').read()
+        decrypted = ve.decryptExt(bin_data, key)
+        with open(text, 'wb') as f:
+            final = f.write(decrypted)
+        return final  
 
     def playfairDe(self):
         key = self.textEditKey.toPlainText()
