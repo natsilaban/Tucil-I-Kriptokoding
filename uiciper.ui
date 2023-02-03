@@ -76,14 +76,14 @@ p, li { white-space: pre-wrap; }
       <x>20</x>
       <y>80</y>
       <width>391</width>
-      <height>91</height>
+      <height>112</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_6">
      <item row="0" column="0">
       <widget class="QLabel" name="labelPlaintext2">
        <property name="text">
-        <string>Plaintext</string>
+        <string>Text</string>
        </property>
       </widget>
      </item>
