@@ -31,12 +31,3 @@ def decryptExt(text, key):
         listofText.append(x)
         a += x.to_bytes(1, 'big')
     return a
-
-def writeFile(input, hasil):
-    with open(input, 'wb') as f:
-        f.write(hasil)
-
-#key = "ABC"
-#a = decryptExt(text, key)
-#with open('a.pdf', 'wb') as f:
-#        f.write(a)
