@@ -15,6 +15,7 @@ class Window(QMainWindow):
 
         self.comboBoxMethod_2.activated.connect(self.method)
         print("wek1")
+        self.saveButton.clicked.connect(self.saveResult)
 
     def method(self):
         if (self.comboBoxMethod_2.currentText() == "Encrypt"):
@@ -58,8 +59,12 @@ class Window(QMainWindow):
             self.generateButton.clicked.connect(self.onetimepadDe) 
 
     def vigenereEn(self):
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
+
         encrypted = va.encryptText(text, key)
         self.textHasiltanpaspace.setText(encrypted)
         encryptedSpasi = perLima(encrypted)
@@ -68,7 +73,7 @@ class Window(QMainWindow):
 
     def vigenereExEn(self):
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
+        text = self.textEditPlaintext_2.toPlainText()
         bin_data = open(text, 'rb').read()
         encrypted = ve.encryptExt(bin_data, key)
         with open(text, 'wb') as f:
@@ -76,18 +81,25 @@ class Window(QMainWindow):
         return final
 
     def playfairEn(self):
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
         encrypted = pf.encryptPlayfair(key, text)
         self.textHasiltanpaspace.setText(encrypted)
         encryptedSpasi = perLima(encrypted)
         self.textHasilKelompok.setText(encryptedSpasi)
 
     def onetimepadEn(self):
-        print("0")
-        filename = self.textEditFilename.toPlainText() + '.txt'
-        print("1")
-        text = self.textEditPlaintext.toPlainText()
+
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
+
+        filename = self.textEditKey.toPlainText() + '.txt'
+
         if not (os.path.exists(filename)):
             otp.generateRandomKey(filename)
         print("2")
@@ -100,8 +112,11 @@ class Window(QMainWindow):
   
 
     def vigenereDe(self):
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
         decrypted = va.decryptText(text, key)
         self.textHasiltanpaspace.setText(decrypted)
         decryptedSpasi = perLima(decrypted)
@@ -110,7 +125,7 @@ class Window(QMainWindow):
 
     def vigenereExDe(self):
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
+        text = self.textEditPlaintext_2.toPlainText()
         bin_data = open(text, 'rb').read()
         decrypted = ve.decryptExt(bin_data, key)
         with open(text, 'wb') as f:
@@ -118,25 +133,38 @@ class Window(QMainWindow):
         return final  
 
     def playfairDe(self):
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
         key = self.textEditKey.toPlainText()
-        text = self.textEditPlaintext.toPlainText()
-        decrypted = pf.encryptPlayfair(key, text)
+        decrypted = pf.decryptPlayfair(key, text)
         self.textHasiltanpaspace.setText(decrypted)
         decryptedSpasi = perLima(decrypted)
         self.textHasilKelompok.setText(decryptedSpasi)
 
     def onetimepadDe(self):
-        print("0")
-        filename = self.textEditFilename.toPlainText() + '.txt'
-        print("1")
-        text = self.textEditPlaintext.toPlainText()
+        if self.textEditPlaintext.toPlainText() == "":
+            text = readTxt(self.textEditPlaintext_2.toPlainText())
+        else:
+            text = self.textEditPlaintext.toPlainText()
+
+        filename = self.textEditKey.toPlainText() + '.txt'
 
         key = otp.getKey(filename, text)
         decrypted = va.decryptText(text, key)
         print("3")
         self.textHasiltanpaspace.setText(decrypted)
         decryptedSpasi = perLima(decrypted)
-        self.textHasilKelompok.setText(decryptedSpasi) 
+        self.textHasilKelompok.setText(decryptedSpasi)
+    
+    def saveResult(self):
+        with open("hasil.txt", 'w') as f:
+            f.write(self.textHasiltanpaspace.toPlainText())
+
+    
+def readTxt(file):
+    return open(file, 'r').read()
 
 def perLima(text):
     perLima = ""

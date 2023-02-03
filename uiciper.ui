@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>433</width>
-    <height>713</height>
+    <width>434</width>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>380</y>
+      <y>390</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>640</y>
+      <y>650</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>290</y>
       <width>391</width>
       <height>91</height>
      </rect>
@@ -53,7 +53,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="labelKey">
        <property name="text">
-        <string>Key</string>
+        <string>Key (for One-Time Pad, input filename)</string>
        </property>
       </widget>
      </item>
@@ -76,7 +76,7 @@ p, li { white-space: pre-wrap; }
       <x>20</x>
       <y>80</y>
       <width>391</width>
-      <height>112</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_6">
@@ -110,13 +110,6 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_5">
-     <item row="0" column="3">
-      <widget class="QLabel" name="labelPlaintext">
-       <property name="text">
-        <string>Plaintext</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="1">
       <widget class="QLabel" name="labelMethod">
        <property name="text">
@@ -148,27 +141,6 @@ p, li { white-space: pre-wrap; }
        </item>
       </widget>
      </item>
-     <item row="1" column="3">
-      <widget class="QComboBox" name="comboBoxManual">
-       <item>
-        <property name="text">
-         <string>Manual</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>File</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelMethod2">
-       <property name="text">
-        <string>Activity</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QComboBox" name="comboBoxMethod_2">
        <item>
@@ -183,13 +155,20 @@ p, li { white-space: pre-wrap; }
        </item>
       </widget>
      </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelMethod2">
+       <property name="text">
+        <string>Activity</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget_3">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>530</y>
+      <y>540</y>
       <width>391</width>
       <height>101</height>
      </rect>
@@ -219,7 +198,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>420</y>
+      <y>430</y>
       <width>391</width>
       <height>91</height>
      </rect>
@@ -245,25 +224,25 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget_5">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>280</y>
+      <y>190</y>
       <width>391</width>
       <height>91</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="gridLayout_9">
      <item row="0" column="0">
-      <widget class="QLabel" name="labelKey_2">
+      <widget class="QLabel" name="labelPlaintext2_2">
        <property name="text">
-        <string>Filename (for One-Time Pad)</string>
+        <string>File directory</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QTextEdit" name="textEditFilename">
+      <widget class="QTextEdit" name="textEditPlaintext_2">
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -281,7 +260,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>433</width>
+     <width>434</width>
      <height>26</height>
     </rect>
    </property>

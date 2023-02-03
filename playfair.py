@@ -90,9 +90,11 @@ def barisKolomBeda(key, barisA, barisB, kolomA, kolomB):
 
 def encryptPlayfair(key, plaintext):
     encrypted = []
-    key = alphabetOnly(key)
+    key = key.replace(" ", "")
+    key = key.lower()
     keyTable = createKeyTable(key)
-    plaintext = alphabetOnly(key)
+    plaintext = plaintext.replace(" ", "")
+    plaintext = plaintext.lower()
 
     text = bagiDuaPlaintext(ubahPlaintext(plaintext))
 
@@ -146,9 +148,11 @@ def deBarisKolomBeda(key, barisA, barisB, kolomA, kolomB):
 
 def decryptPlayfair(key, plaintext):
     decrypted = []
-    key = alphabetOnly(key)
+    key = key.replace(" ", "")
+    key = key.lower()
     keyTable = createKeyTable(key)
-    plaintext = alphabetOnly(plaintext)
+    plaintext = plaintext.replace(" ", "")
+    plaintext = plaintext.lower()
     
     text = bagiDuaPlaintext(plaintext)
 
